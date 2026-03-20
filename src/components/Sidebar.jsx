@@ -95,12 +95,22 @@ export default function Sidebar() {
       {/* Logo */}
       <div className="px-6 py-6">
         <div className="flex items-center gap-3">
-          <div
-            className="w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold text-sm"
-            style={{ background: 'linear-gradient(135deg, #7c3aed, #ec4899)' }}
-          >
-            CB
-          </div>
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="36" height="36" rx="10" fill="url(#cb-grad)"/>
+            {/* Two overlapping circles representing brand ↔ creator bridge */}
+            <circle cx="13" cy="18" r="6" fill="white" fillOpacity="0.25"/>
+            <circle cx="23" cy="18" r="6" fill="white" fillOpacity="0.25"/>
+            {/* Intersection highlight */}
+            <path d="M18 12.6a6 6 0 0 1 0 10.8A6 6 0 0 1 18 12.6z" fill="white" fillOpacity="0.45"/>
+            {/* Bridge bar */}
+            <rect x="11" y="17" width="14" height="2" rx="1" fill="white" fillOpacity="0.9"/>
+            <defs>
+              <linearGradient id="cb-grad" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#7c3aed"/>
+                <stop offset="1" stopColor="#ec4899"/>
+              </linearGradient>
+            </defs>
+          </svg>
           <div>
             <p className="text-white font-semibold text-sm leading-tight">CollaBridge</p>
             <p className="text-xs" style={{ color: '#6b6b80' }}>
