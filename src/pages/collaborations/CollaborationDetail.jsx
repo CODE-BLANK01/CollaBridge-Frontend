@@ -29,7 +29,7 @@ export default function CollaborationDetail() {
       .then(setCollab)
       .catch(() => navigate('/collaborations'))
       .finally(() => setLoading(false))
-  }, [id])
+  }, [id, navigate])
 
   async function handleDelete() {
     setDeleting(true)

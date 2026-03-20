@@ -16,16 +16,24 @@ export default function CollaborationsList() {
   const [filter, setFilter] = useState('all')
   const [search, setSearch] = useState('')
 
+  const userName = user?.name ?? ''
+
   useEffect(() => {
-    setLoading(true)
-    const params = { creatorName: user?.name ?? '' }
-    if (filter !== 'all') params.status = filter
-    if (search.trim()) params.brandName = search.trim()
-    getCollaborations(params)
-      .then(setCollabs)
-      .catch(console.error)
-      .finally(() => setLoading(false))
-  }, [filter, search])
+    async function load() {
+      setLoading(true)
+      try {
+        const params = { creatorName: userName }
+        if (filter !== 'all') params.status = filter
+        if (search.trim()) params.brandName = search.trim()
+        setCollabs(await getCollaborations(params))
+      } catch (e) {
+        console.error(e)
+      } finally {
+        setLoading(false)
+      }
+    }
+    load()
+  }, [filter, search, userName])
 
   return (
     <div className="max-w-5xl">

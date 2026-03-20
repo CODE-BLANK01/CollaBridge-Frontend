@@ -5,6 +5,7 @@ const AuthContext = createContext(null)
 
 const BASE_URL = import.meta.env.VITE_API_URL
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useAuth() {
   const ctx = useContext(AuthContext)
   if (!ctx) throw new Error('useAuth must be used inside AuthProvider')
@@ -14,14 +15,11 @@ export function useAuth() {
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null)
   const [token, setToken] = useState(null)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(() => !!localStorage.getItem('cb_token'))
 
   useEffect(() => {
     const storedToken = localStorage.getItem('cb_token')
-    if (!storedToken) {
-      setLoading(false)
-      return
-    }
+    if (!storedToken) return
     fetch(`${BASE_URL}/api/auth/me`, {
       headers: { Authorization: `Bearer ${storedToken}` },
     })

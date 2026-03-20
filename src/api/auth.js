@@ -10,6 +10,3 @@ export function loginUser(data) {
   return request(`${ROUTE}/login`, { method: 'POST', body: data })
 }
 
-export function getMe() {
-  return request(`${ROUTE}/me`).then(r => r.user)
-}

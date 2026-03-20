@@ -16,16 +16,24 @@ export default function CampaignsList() {
   const [filter, setFilter] = useState('all')
   const [search, setSearch] = useState('')
 
+  const userName = user?.name ?? ''
+
   useEffect(() => {
-    setLoading(true)
-    const params = { brandName: user?.name ?? '' }
-    if (filter !== 'all') params.status = filter
-    if (search.trim()) params.campaignTitle = search.trim()
-    getCampaigns(params)
-      .then(setCampaigns)
-      .catch(console.error)
-      .finally(() => setLoading(false))
-  }, [filter, search])
+    async function load() {
+      setLoading(true)
+      try {
+        const params = { brandName: userName }
+        if (filter !== 'all') params.status = filter
+        if (search.trim()) params.campaignTitle = search.trim()
+        setCampaigns(await getCampaigns(params))
+      } catch (e) {
+        console.error(e)
+      } finally {
+        setLoading(false)
+      }
+    }
+    load()
+  }, [filter, search, userName])
 
   return (
     <div className="max-w-5xl">

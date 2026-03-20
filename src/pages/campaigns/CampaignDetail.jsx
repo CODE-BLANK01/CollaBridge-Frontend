@@ -29,7 +29,7 @@ export default function CampaignDetail() {
       .then(setCampaign)
       .catch(() => navigate('/campaigns'))
       .finally(() => setLoading(false))
-  }, [id])
+  }, [id, navigate])
 
   async function handleDelete() {
     setDeleting(true)

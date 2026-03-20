@@ -53,7 +53,7 @@ export default function CollaborationForm() {
       }))
       .catch(() => navigate('/collaborations'))
       .finally(() => setLoading(false))
-  }, [id])
+  }, [id, isEdit, navigate])
 
   function set(field) {
     return e => setForm(prev => ({ ...prev, [field]: e.target.value }))
