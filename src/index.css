@@ -13,6 +13,10 @@ html, body {
   text-align: left;
 }
 
+button, [role="button"], a {
+  cursor: pointer;
+}
+
 ::-webkit-scrollbar {
   width: 5px;
   height: 5px;
