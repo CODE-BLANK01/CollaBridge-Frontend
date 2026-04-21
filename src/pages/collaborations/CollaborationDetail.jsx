@@ -69,7 +69,7 @@ export default function CollaborationDetail() {
         className="rounded-2xl p-6 mb-6 relative overflow-hidden"
         style={{ background: 'linear-gradient(135deg, rgba(249,115,22,0.15), rgba(236,72,153,0.08))', border: '1px solid rgba(249,115,22,0.25)' }}
       >
-        <div className="absolute top-0 right-0 w-48 h-48 rounded-full opacity-10 -translate-y-16 translate-x-16"
+        <div className="absolute top-0 right-0 w-48 h-48 rounded-full opacity-10 -translate-y-16 translate-x-16 pointer-events-none"
           style={{ background: 'linear-gradient(135deg, #f97316, #ec4899)' }} />
         <div className="flex items-start justify-between gap-4">
           <div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { getCollaboration, createCollaboration, updateCollaboration } from '../../api/collaborations'
+import { useAuth } from '../../context/AuthContext'
 import LoadingSpinner from '../../components/LoadingSpinner'
 
 const PLATFORMS = ['Instagram', 'TikTok', 'YouTube', 'Twitter', 'Facebook', 'Snapchat', 'Pinterest', 'LinkedIn']
@@ -27,13 +28,14 @@ function Field({ label, required, children }) {
 export default function CollaborationForm() {
   const { id } = useParams()
   const navigate = useNavigate()
+  const { user } = useAuth()
   const isEdit = Boolean(id)
 
   const [loading, setLoading] = useState(isEdit)
   const [submitting, setSubmitting] = useState(false)
   const [error, setError] = useState('')
   const [form, setForm] = useState({
-    creatorName: '', brandName: '', campaignTitle: '',
+    creatorName: user?.name ?? '', brandName: '', campaignTitle: '',
     platform: '', dueDate: '', submissionLink: '',
     status: 'draft', personalNotes: '',
   })
@@ -101,10 +103,8 @@ export default function CollaborationForm() {
       <form onSubmit={handleSubmit} className="space-y-5" style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38', borderRadius: '1rem', padding: '1.5rem' }}>
         <div className="grid grid-cols-2 gap-4">
           <Field label="Creator Name" required>
-            <input type="text" value={form.creatorName} onChange={set('creatorName')} required
-              className={inputClass} style={inputStyle} placeholder="e.g. @janedoe"
-              onFocus={e => e.target.style.borderColor = 'rgba(249,115,22,0.6)'}
-              onBlur={e => e.target.style.borderColor = '#2a2a38'} />
+            <input type="text" value={form.creatorName} readOnly
+              className={inputClass} style={{ ...inputStyle, opacity: 0.6, cursor: 'not-allowed' }} />
           </Field>
           <Field label="Brand Name" required>
             <input type="text" value={form.brandName} onChange={set('brandName')} required
