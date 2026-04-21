@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
+import toast from 'react-hot-toast'
 import { getApplications, updateApplication } from '../../api/applications'
 import LoadingSpinner from '../../components/LoadingSpinner'
 import PlatformBadge from '../../components/PlatformBadge'
@@ -255,6 +256,7 @@ export default function MyApplications({ creatorName }) {
   async function handleDraftSubmit(appId, draftLink) {
     const updated = await updateApplication(appId, { draftLink })
     setApps((prev) => prev.map((a) => (a._id === appId ? updated : a)))
+    toast.success('Draft link submitted')
   }
 
   const filtered =

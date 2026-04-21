@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 import { getCollaboration, deleteCollaboration } from '../../api/collaborations'
 import StatusBadge from '../../components/StatusBadge'
 import PlatformBadge from '../../components/PlatformBadge'
@@ -35,9 +36,10 @@ export default function CollaborationDetail() {
     setDeleting(true)
     try {
       await deleteCollaboration(id)
+      toast.success('Collaboration deleted')
       navigate('/collaborations')
     } catch (e) {
-      console.error(e)
+      toast.error(e.message)
       setDeleting(false)
     }
   }

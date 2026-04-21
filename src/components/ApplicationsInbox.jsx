@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
+import toast from 'react-hot-toast'
 import { getApplications, updateApplication } from '../api/applications'
 import PlatformBadge from './PlatformBadge'
 import LoadingSpinner from './LoadingSpinner'
@@ -325,12 +326,22 @@ export default function ApplicationsInbox() {
       .finally(() => setLoading(false))
   }, [])
 
+  const STATUS_TOAST = {
+    'under review': 'Marked as under review',
+    'revision requested': 'Revision requested',
+    approved: 'Draft approved ✓',
+    'deal closed': 'Deal closed!',
+    rejected: 'Application rejected',
+  }
+
   async function handleAction(appId, newStatus) {
     setActing((prev) => ({ ...prev, [appId]: true }))
     try {
       const updated = await updateApplication(appId, { status: newStatus })
       setApps((prev) => prev.map((a) => (a._id === appId ? updated : a)))
+      toast.success(STATUS_TOAST[newStatus] ?? 'Status updated')
     } catch (err) {
+      toast.error(err.message)
       setError(err.message)
     } finally {
       setActing((prev) => ({ ...prev, [appId]: false }))

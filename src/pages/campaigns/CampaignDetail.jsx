@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 import { getCampaign, deleteCampaign } from '../../api/campaigns'
 import StatusBadge from '../../components/StatusBadge'
 import PlatformBadge from '../../components/PlatformBadge'
@@ -35,9 +36,10 @@ export default function CampaignDetail() {
     setDeleting(true)
     try {
       await deleteCampaign(id)
+      toast.success('Campaign deleted')
       navigate('/campaigns')
     } catch (e) {
-      console.error(e)
+      toast.error(e.message)
       setDeleting(false)
     }
   }

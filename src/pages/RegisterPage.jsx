@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 import { registerUser } from '../api/auth'
 import { useAuth } from '../context/AuthContext'
 
@@ -46,9 +47,11 @@ export default function RegisterPage() {
     try {
       const res = await registerUser(form)
       login(res.token, res.user)
+      toast.success('Account created! Welcome to CollaBridge.')
       navigate('/')
     } catch (err) {
       setError(err.message)
+      toast.error(err.message)
     } finally {
       setSubmitting(false)
     }

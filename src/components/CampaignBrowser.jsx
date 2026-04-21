@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useState, useEffect } from 'react'
+import toast from 'react-hot-toast'
 import { getCampaigns } from '../api/campaigns'
 import { createApplication, getApplications } from '../api/applications'
 import PlatformBadge from './PlatformBadge'
@@ -53,7 +54,9 @@ export default function CampaignBrowser({ creatorName }) {
         creatorName,
       })
       setApplied((prev) => ({ ...prev, [campaign._id]: true }))
+      toast.success(`Applied to ${campaign.campaignTitle}`)
     } catch (err) {
+      toast.error(err.message)
       setError(err.message)
     } finally {
       setApplying((prev) => ({ ...prev, [campaign._id]: false }))

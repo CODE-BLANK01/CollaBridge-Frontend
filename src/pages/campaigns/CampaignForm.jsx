@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 import { getCampaign, createCampaign, updateCampaign } from '../../api/campaigns'
 import { useAuth } from '../../context/AuthContext'
 import LoadingSpinner from '../../components/LoadingSpinner'
@@ -72,13 +73,16 @@ export default function CampaignForm() {
     try {
       if (isEdit) {
         await updateCampaign(id, payload)
+        toast.success('Campaign updated')
         navigate(`/campaigns/${id}`)
       } else {
         const created = await createCampaign(payload)
+        toast.success('Campaign created')
         navigate(`/campaigns/${created._id}`)
       }
     } catch (err) {
       setError(err.message)
+      toast.error(err.message)
     } finally {
       setSubmitting(false)
     }

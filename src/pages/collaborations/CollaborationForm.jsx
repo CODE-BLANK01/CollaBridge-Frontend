@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 import { getCollaboration, createCollaboration, updateCollaboration } from '../../api/collaborations'
 import { useAuth } from '../../context/AuthContext'
 import LoadingSpinner from '../../components/LoadingSpinner'
@@ -71,13 +72,16 @@ export default function CollaborationForm() {
     try {
       if (isEdit) {
         await updateCollaboration(id, payload)
+        toast.success('Collaboration updated')
         navigate(`/collaborations/${id}`)
       } else {
         const created = await createCollaboration(payload)
+        toast.success('Collaboration logged')
         navigate(`/collaborations/${created._id}`)
       }
     } catch (err) {
       setError(err.message)
+      toast.error(err.message)
     } finally {
       setSubmitting(false)
     }
