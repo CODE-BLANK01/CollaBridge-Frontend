@@ -11,7 +11,7 @@ function Field({ label, value }) {
   if (!value && value !== 0) return null
   return (
     <div>
-      <p className="text-xs font-medium mb-1" style={{ color: '#6b6b80' }}>{label}</p>
+      <p className="text-xs font-medium mb-1" style={{ color: '#9494aa' }}>{label}</p>
       <p className="text-sm text-white">{value}</p>
     </div>
   )
@@ -60,7 +60,7 @@ export default function CampaignDetail() {
       )}
 
       {/* Back */}
-      <Link to="/campaigns" className="inline-flex items-center gap-1.5 text-sm mb-6 transition-colors" style={{ color: '#6b6b80' }}>
+      <Link to="/campaigns" className="inline-flex items-center gap-1.5 text-sm mb-6 transition-colors" style={{ color: '#9494aa' }}>
         <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
@@ -110,19 +110,19 @@ export default function CampaignDetail() {
         <Field label="Deadline" value={campaign.deadline ? new Date(campaign.deadline).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : null} />
         {campaign.description && (
           <div className="col-span-2">
-            <p className="text-xs font-medium mb-1" style={{ color: '#6b6b80' }}>Description</p>
+            <p className="text-xs font-medium mb-1" style={{ color: '#9494aa' }}>Description</p>
             <p className="text-sm text-white leading-relaxed">{campaign.description}</p>
           </div>
         )}
         {campaign.requirements && (
           <div className="col-span-2">
-            <p className="text-xs font-medium mb-1" style={{ color: '#6b6b80' }}>Requirements</p>
+            <p className="text-xs font-medium mb-1" style={{ color: '#9494aa' }}>Requirements</p>
             <p className="text-sm text-white leading-relaxed whitespace-pre-wrap">{campaign.requirements}</p>
           </div>
         )}
         {campaign.internalNotes && (
           <div className="col-span-2">
-            <p className="text-xs font-medium mb-1" style={{ color: '#6b6b80' }}>Internal Notes</p>
+            <p className="text-xs font-medium mb-1" style={{ color: '#9494aa' }}>Internal Notes</p>
             <div className="p-3 rounded-xl text-sm text-white leading-relaxed whitespace-pre-wrap"
               style={{ backgroundColor: '#0f0f18' }}>
               {campaign.internalNotes}
@@ -130,12 +130,12 @@ export default function CampaignDetail() {
           </div>
         )}
         <div>
-          <p className="text-xs font-medium mb-1" style={{ color: '#6b6b80' }}>Created</p>
-          <p className="text-sm" style={{ color: '#6b6b80' }}>{new Date(campaign.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
+          <p className="text-xs font-medium mb-1" style={{ color: '#9494aa' }}>Created</p>
+          <p className="text-sm" style={{ color: '#9494aa' }}>{new Date(campaign.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
         </div>
         <div>
-          <p className="text-xs font-medium mb-1" style={{ color: '#6b6b80' }}>Last Updated</p>
-          <p className="text-sm" style={{ color: '#6b6b80' }}>{new Date(campaign.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
+          <p className="text-xs font-medium mb-1" style={{ color: '#9494aa' }}>Last Updated</p>
+          <p className="text-sm" style={{ color: '#9494aa' }}>{new Date(campaign.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
         </div>
       </div>
     </div>

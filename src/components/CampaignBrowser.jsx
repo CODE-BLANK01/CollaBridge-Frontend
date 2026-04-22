@@ -74,7 +74,7 @@ export default function CampaignBrowser({ creatorName }) {
     <div className="max-w-6xl">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-1">Browse Campaigns</h1>
-        <p style={{ color: '#6b6b80' }}>
+        <p style={{ color: '#9494aa' }}>
           Discover open brand campaigns and apply
         </p>
       </div>
@@ -85,6 +85,8 @@ export default function CampaignBrowser({ creatorName }) {
             key={p}
             type="button"
             onClick={() => setPlatform(p)}
+            aria-pressed={platform === p}
+            aria-label={p === 'All' ? 'Show all platforms' : `Filter by ${p}`}
             className="px-4 py-1.5 rounded-full text-xs font-medium transition-all"
             style={
               platform === p
@@ -96,7 +98,7 @@ export default function CampaignBrowser({ creatorName }) {
                   }
                 : {
                     backgroundColor: '#16161f',
-                    color: '#6b6b80',
+                    color: '#9494aa',
                     border: '1px solid #2a2a38',
                   }
             }
@@ -130,7 +132,7 @@ export default function CampaignBrowser({ creatorName }) {
               <p className="text-sm font-semibold text-white leading-snug">
                 {c.campaignTitle}
               </p>
-              <p className="text-xs mt-1" style={{ color: '#6b6b80' }}>
+              <p className="text-xs mt-1" style={{ color: '#9494aa' }}>
                 {c.brandName}
               </p>
             </div>
@@ -161,7 +163,7 @@ export default function CampaignBrowser({ creatorName }) {
             )}
 
             {c.deadline && (
-              <p className="text-xs" style={{ color: '#6b6b80' }}>
+              <p className="text-xs" style={{ color: '#9494aa' }}>
                 Deadline:{' '}
                 {new Date(c.deadline).toLocaleDateString('en-US', {
                   month: 'short',
@@ -175,6 +177,7 @@ export default function CampaignBrowser({ creatorName }) {
               type="button"
               onClick={() => handleApply(c)}
               disabled={applied[c._id] || applying[c._id]}
+              aria-label={applied[c._id] ? `Already applied to ${c.campaignTitle}` : `Apply to ${c.campaignTitle}`}
               className="mt-auto w-full py-2 rounded-xl text-xs font-semibold text-white transition-all"
               style={
                 applied[c._id]
@@ -204,7 +207,7 @@ export default function CampaignBrowser({ creatorName }) {
         {filtered.length === 0 && (
           <p
             className="text-center py-16 text-sm"
-            style={{ color: '#6b6b80', gridColumn: '1 / -1' }}
+            style={{ color: '#9494aa', gridColumn: '1 / -1' }}
           >
             No open campaigns for this platform right now.
           </p>

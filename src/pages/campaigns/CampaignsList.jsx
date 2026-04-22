@@ -41,7 +41,7 @@ export default function CampaignsList() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-3xl font-bold text-white mb-1">Campaigns</h1>
-          <p style={{ color: '#6b6b80' }}>Manage brand campaigns</p>
+          <p style={{ color: '#9494aa' }}>Manage brand campaigns</p>
         </div>
         <Link
           to="/campaigns/new"
@@ -65,7 +65,7 @@ export default function CampaignsList() {
               className="px-3 py-1.5 rounded-lg text-xs font-semibold transition-all"
               style={filter === f
                 ? { background: 'linear-gradient(135deg, #7c3aed, #ec4899)', color: '#fff' }
-                : { color: '#6b6b80', backgroundColor: 'transparent' }}
+                : { color: '#9494aa', backgroundColor: 'transparent' }}
             >
               {FILTER_LABELS[f]}
             </button>
@@ -90,7 +90,7 @@ export default function CampaignsList() {
             <div className="text-center py-16 rounded-2xl" style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38' }}>
               <p className="text-4xl mb-3">📣</p>
               <p className="text-white font-medium">No campaigns found</p>
-              <p className="text-sm mt-1 mb-4" style={{ color: '#6b6b80' }}>
+              <p className="text-sm mt-1 mb-4" style={{ color: '#9494aa' }}>
                 {filter !== 'all' ? 'Try a different filter' : 'Create your first campaign'}
               </p>
               <Link to="/campaigns/new" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white"
@@ -113,18 +113,18 @@ export default function CampaignsList() {
                   <p className="text-white font-semibold truncate">{c.campaignTitle}</p>
                   <PlatformBadge platform={c.platform} />
                 </div>
-                <p className="text-sm" style={{ color: '#6b6b80' }}>{c.brandName}</p>
+                <p className="text-sm" style={{ color: '#9494aa' }}>{c.brandName}</p>
                 {c.description && (
-                  <p className="text-xs mt-1 line-clamp-1" style={{ color: '#4a4a60' }}>{c.description}</p>
+                  <p className="text-xs mt-1 line-clamp-1" style={{ color: '#7878a0' }}>{c.description}</p>
                 )}
                 <div className="flex items-center gap-4 mt-2 flex-wrap">
                   {c.budget && (
-                    <span className="text-xs" style={{ color: '#6b6b80' }}>
+                    <span className="text-xs" style={{ color: '#9494aa' }}>
                       💰 ${Number(c.budget).toLocaleString()}
                     </span>
                   )}
                   {c.deadline && (
-                    <span className="text-xs" style={{ color: '#6b6b80' }}>
+                    <span className="text-xs" style={{ color: '#9494aa' }}>
                       📅 {new Date(c.deadline).toLocaleDateString()}
                     </span>
                   )}

@@ -120,7 +120,7 @@ function ApplicationCard({ app, onDraftSubmit }) {
           <p className="text-sm font-semibold text-white leading-snug">
             {app.campaignTitle}
           </p>
-          <p className="text-xs mt-0.5" style={{ color: '#6b6b80' }}>
+          <p className="text-xs mt-0.5" style={{ color: '#9494aa' }}>
             {app.brandName}
           </p>
         </div>
@@ -136,14 +136,14 @@ function ApplicationCard({ app, onDraftSubmit }) {
       </div>
 
       {/* Status hint */}
-      <p className="text-xs mb-4" style={{ color: '#6b6b80' }}>
+      <p className="text-xs mb-4" style={{ color: '#9494aa' }}>
         {meta.hint}
       </p>
 
       {/* Current draft link (read-only) */}
       {app.draftLink && (
         <div className="mb-3">
-          <p className="text-xs font-medium mb-1" style={{ color: '#4a4a60' }}>
+          <p className="text-xs font-medium mb-1" style={{ color: '#7878a0' }}>
             CURRENT DRAFT
           </p>
           <a
@@ -275,7 +275,7 @@ export default function MyApplications({ creatorName }) {
     <div className="max-w-4xl">
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-1">My Applications</h1>
-        <p style={{ color: '#6b6b80' }}>
+        <p style={{ color: '#9494aa' }}>
           Track your deals and submit drafts for review
         </p>
       </div>
@@ -339,7 +339,7 @@ export default function MyApplications({ creatorName }) {
                   }
                 : {
                     backgroundColor: '#16161f',
-                    color: '#6b6b80',
+                    color: '#9494aa',
                     border: '1px solid #2a2a38',
                   }
             }
@@ -367,10 +367,10 @@ export default function MyApplications({ creatorName }) {
           className="text-center py-16 rounded-2xl"
           style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38' }}
         >
-          <p className="text-sm" style={{ color: '#6b6b80' }}>
+          <p className="text-sm" style={{ color: '#9494aa' }}>
             No applications yet.
           </p>
-          <p className="text-xs mt-1" style={{ color: '#4a4a60' }}>
+          <p className="text-xs mt-1" style={{ color: '#7878a0' }}>
             Browse open campaigns and hit Apply to get started.
           </p>
         </div>
@@ -379,7 +379,7 @@ export default function MyApplications({ creatorName }) {
           className="text-center py-12 rounded-2xl"
           style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38' }}
         >
-          <p className="text-sm" style={{ color: '#6b6b80' }}>
+          <p className="text-sm" style={{ color: '#9494aa' }}>
             No applications with status "{filter}".
           </p>
         </div>

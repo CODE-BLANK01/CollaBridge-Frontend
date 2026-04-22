@@ -17,9 +17,9 @@ function StatCard({ label, value, sub, gradient }) {
     >
       <div className="absolute top-0 right-0 w-24 h-24 rounded-full opacity-10 -translate-y-8 translate-x-8"
         style={{ background: gradient }} />
-      <p className="text-xs font-medium mb-1" style={{ color: '#6b6b80' }}>{label}</p>
+      <p className="text-xs font-medium mb-1" style={{ color: '#9494aa' }}>{label}</p>
       <p className="text-4xl font-bold text-white">{value}</p>
-      {sub && <p className="text-xs mt-1" style={{ color: '#6b6b80' }}>{sub}</p>}
+      {sub && <p className="text-xs mt-1" style={{ color: '#9494aa' }}>{sub}</p>}
     </div>
   )
 }
@@ -41,7 +41,7 @@ function BrandDashboard({ campaigns, applications }) {
     <>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-1">Brand Dashboard</h1>
-        <p style={{ color: '#6b6b80' }}>Your campaigns and incoming applications</p>
+        <p style={{ color: '#9494aa' }}>Your campaigns and incoming applications</p>
       </div>
 
       <div className="grid grid-cols-2 gap-4 mb-8 lg:grid-cols-4">
@@ -63,14 +63,14 @@ function BrandDashboard({ campaigns, applications }) {
                 style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38' }}>
                 <div className="min-w-0">
                   <p className="text-sm font-medium text-white truncate">{a.campaignTitle}</p>
-                  <p className="text-xs mt-0.5 truncate" style={{ color: '#6b6b80' }}>by {a.creatorName}</p>
+                  <p className="text-xs mt-0.5 truncate" style={{ color: '#9494aa' }}>by {a.creatorName}</p>
                 </div>
                 <StatusBadge status={a.status} type="application" />
               </div>
             ))}
             {applications.length === 0 && (
               <div className="text-center py-8 rounded-xl" style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38' }}>
-                <p className="text-sm" style={{ color: '#6b6b80' }}>No applications yet</p>
+                <p className="text-sm" style={{ color: '#9494aa' }}>No applications yet</p>
                 <Link to="/campaigns/new" className="text-xs mt-1 block" style={{ color: '#c084fc' }}>Create a campaign →</Link>
               </div>
             )}
@@ -92,7 +92,7 @@ function BrandDashboard({ campaigns, applications }) {
               >
                 <div className="min-w-0">
                   <p className="text-sm font-medium text-white truncate">{c.campaignTitle}</p>
-                  <p className="text-xs mt-0.5 truncate" style={{ color: '#6b6b80' }}>{c.platform}</p>
+                  <p className="text-xs mt-0.5 truncate" style={{ color: '#9494aa' }}>{c.platform}</p>
                 </div>
                 <div className="flex items-center gap-2 ml-3 shrink-0">
                   <PlatformBadge platform={c.platform} />
@@ -102,7 +102,7 @@ function BrandDashboard({ campaigns, applications }) {
             ))}
             {campaigns.length === 0 && (
               <div className="text-center py-8 rounded-xl" style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38' }}>
-                <p className="text-sm" style={{ color: '#6b6b80' }}>No campaigns yet</p>
+                <p className="text-sm" style={{ color: '#9494aa' }}>No campaigns yet</p>
                 <Link to="/campaigns/new" className="text-xs mt-1 block" style={{ color: '#c084fc' }}>Create one →</Link>
               </div>
             )}
@@ -128,7 +128,7 @@ function CreatorDashboard({ collabs, applications }) {
     <>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-1">Creator Dashboard</h1>
-        <p style={{ color: '#6b6b80' }}>Your activity at a glance</p>
+        <p style={{ color: '#9494aa' }}>Your activity at a glance</p>
       </div>
 
       <div className="grid grid-cols-2 gap-4 mb-8 lg:grid-cols-4">
@@ -150,14 +150,14 @@ function CreatorDashboard({ collabs, applications }) {
                 style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38' }}>
                 <div className="min-w-0">
                   <p className="text-sm font-medium text-white truncate">{a.campaignTitle}</p>
-                  <p className="text-xs mt-0.5 truncate" style={{ color: '#6b6b80' }}>{a.brandName}</p>
+                  <p className="text-xs mt-0.5 truncate" style={{ color: '#9494aa' }}>{a.brandName}</p>
                 </div>
                 <StatusBadge status={a.status} type="application" />
               </div>
             ))}
             {applications.length === 0 && (
               <div className="text-center py-8 rounded-xl" style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38' }}>
-                <p className="text-sm" style={{ color: '#6b6b80' }}>No applications yet</p>
+                <p className="text-sm" style={{ color: '#9494aa' }}>No applications yet</p>
                 <Link to="/browse" className="text-xs mt-1 block" style={{ color: '#f9a8d4' }}>Browse campaigns →</Link>
               </div>
             )}
@@ -179,7 +179,7 @@ function CreatorDashboard({ collabs, applications }) {
               >
                 <div className="min-w-0">
                   <p className="text-sm font-medium text-white truncate">{c.campaignTitle}</p>
-                  <p className="text-xs mt-0.5 truncate" style={{ color: '#6b6b80' }}>{c.brandName}</p>
+                  <p className="text-xs mt-0.5 truncate" style={{ color: '#9494aa' }}>{c.brandName}</p>
                 </div>
                 <div className="flex items-center gap-2 ml-3 shrink-0">
                   <PlatformBadge platform={c.platform} />
@@ -189,7 +189,7 @@ function CreatorDashboard({ collabs, applications }) {
             ))}
             {collabs.length === 0 && (
               <div className="text-center py-8 rounded-xl" style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38' }}>
-                <p className="text-sm" style={{ color: '#6b6b80' }}>No collaborations yet</p>
+                <p className="text-sm" style={{ color: '#9494aa' }}>No collaborations yet</p>
                 <Link to="/collaborations/new" className="text-xs mt-1 block" style={{ color: '#f9a8d4' }}>Log one →</Link>
               </div>
             )}

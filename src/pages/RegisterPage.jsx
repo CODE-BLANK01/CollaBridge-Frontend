@@ -69,20 +69,21 @@ export default function RegisterPage() {
           </div>
           <div>
             <p className="text-white font-semibold leading-tight">CollaBridge</p>
-            <p className="text-xs" style={{ color: '#6b6b80' }}>Brand × Creator OS</p>
+            <p className="text-xs" style={{ color: '#9494aa' }}>Brand × Creator OS</p>
           </div>
         </div>
 
         <div className="rounded-2xl p-8" style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38' }}>
           <h1 className="text-2xl font-bold text-white mb-1">Create your account</h1>
-          <p className="text-sm mb-6" style={{ color: '#6b6b80' }}>Join CollaBridge today</p>
+          <p className="text-sm mb-6" style={{ color: '#9494aa' }}>Join CollaBridge today</p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-medium mb-1.5" style={{ color: '#9ca3af' }}>
+              <label htmlFor="name" className="block text-xs font-medium mb-1.5" style={{ color: '#9ca3af' }}>
                 Full Name <span style={{ color: '#ec4899' }}>*</span>
               </label>
               <input
+                id="name"
                 type="text" value={form.name} onChange={set('name')} required
                 className={inputClass} style={inputStyle} placeholder="Your name"
                 onFocus={e => e.target.style.borderColor = 'rgba(124,58,237,0.6)'}
@@ -90,10 +91,11 @@ export default function RegisterPage() {
               />
             </div>
             <div>
-              <label className="block text-xs font-medium mb-1.5" style={{ color: '#9ca3af' }}>
+              <label htmlFor="reg-email" className="block text-xs font-medium mb-1.5" style={{ color: '#9ca3af' }}>
                 Email <span style={{ color: '#ec4899' }}>*</span>
               </label>
               <input
+                id="reg-email"
                 type="email" value={form.email} onChange={set('email')} required
                 className={inputClass} style={inputStyle} placeholder="you@example.com"
                 onFocus={e => e.target.style.borderColor = 'rgba(124,58,237,0.6)'}
@@ -101,11 +103,12 @@ export default function RegisterPage() {
               />
             </div>
             <div>
-              <label className="block text-xs font-medium mb-1.5" style={{ color: '#9ca3af' }}>
+              <label htmlFor="reg-password" className="block text-xs font-medium mb-1.5" style={{ color: '#9ca3af' }}>
                 Password <span style={{ color: '#ec4899' }}>*</span>
               </label>
               <div className="relative">
                 <input
+                  id="reg-password"
                   type={showPassword ? 'text' : 'password'}
                   value={form.password} onChange={set('password')} required
                   className={inputClass} style={{ ...inputStyle, paddingRight: '2.75rem' }}
@@ -116,19 +119,21 @@ export default function RegisterPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(v => !v)}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
                   className="absolute right-3 top-1/2 -translate-y-1/2"
-                  style={{ color: '#6b6b80' }}
+                  style={{ color: '#9494aa' }}
                 >
                   <EyeIcon open={showPassword} />
                 </button>
               </div>
             </div>
             <div>
-              <label className="block text-xs font-medium mb-1.5" style={{ color: '#9ca3af' }}>
+              <label htmlFor="reg-confirm" className="block text-xs font-medium mb-1.5" style={{ color: '#9ca3af' }}>
                 Confirm Password <span style={{ color: '#ec4899' }}>*</span>
               </label>
               <div className="relative">
                 <input
+                  id="reg-confirm"
                   type={showConfirm ? 'text' : 'password'}
                   value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} required
                   className={inputClass}
@@ -144,8 +149,9 @@ export default function RegisterPage() {
                 <button
                   type="button"
                   onClick={() => setShowConfirm(v => !v)}
+                  aria-label={showConfirm ? 'Hide confirm password' : 'Show confirm password'}
                   className="absolute right-3 top-1/2 -translate-y-1/2"
-                  style={{ color: '#6b6b80' }}
+                  style={{ color: '#9494aa' }}
                 >
                   <EyeIcon open={showConfirm} />
                 </button>
@@ -168,13 +174,14 @@ export default function RegisterPage() {
                     key={value}
                     type="button"
                     onClick={() => setForm(prev => ({ ...prev, role: value }))}
+                    aria-pressed={form.role === value}
                     className="p-3 rounded-xl text-left transition-all"
                     style={form.role === value
                       ? { background: value === 'creator' ? 'linear-gradient(135deg, rgba(236,72,153,0.2), rgba(124,58,237,0.15))' : 'linear-gradient(135deg, rgba(124,58,237,0.2), rgba(99,102,241,0.15))', border: `1px solid ${value === 'creator' ? 'rgba(236,72,153,0.5)' : 'rgba(124,58,237,0.5)'}` }
                       : { backgroundColor: '#1a1a28', border: '1px solid #2a2a38' }}
                   >
                     <p className="text-sm font-semibold text-white">{label}</p>
-                    <p className="text-xs mt-0.5" style={{ color: '#6b6b80' }}>{desc}</p>
+                    <p className="text-xs mt-0.5" style={{ color: '#9494aa' }}>{desc}</p>
                   </button>
                 ))}
               </div>
@@ -195,7 +202,7 @@ export default function RegisterPage() {
             </button>
           </form>
 
-          <p className="text-sm text-center mt-5" style={{ color: '#6b6b80' }}>
+          <p className="text-sm text-center mt-5" style={{ color: '#9494aa' }}>
             Already have an account?{' '}
             <Link to="/login" className="font-medium" style={{ color: '#a78bfa' }}>
               Sign in

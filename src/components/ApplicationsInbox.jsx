@@ -80,13 +80,13 @@ function ApplicationCard({ app, onAction, acting }) {
             <StatusBadgeInline status={app.status} />
           </div>
           <div className="flex items-center gap-2 mt-1 flex-wrap">
-            <p className="text-xs" style={{ color: '#6b6b80' }}>
+            <p className="text-xs" style={{ color: '#9494aa' }}>
               {app.campaignTitle}
             </p>
             <PlatformBadge platform={app.platform} />
           </div>
         </div>
-        <p className="text-xs shrink-0" style={{ color: '#4a4a60' }}>
+        <p className="text-xs shrink-0" style={{ color: '#7878a0' }}>
           {new Date(app.createdAt).toLocaleDateString('en-US', {
             month: 'short',
             day: 'numeric',
@@ -125,7 +125,7 @@ function ApplicationCard({ app, onAction, acting }) {
         </div>
       ) : (
         !isTerminal && (
-          <p className="text-xs mt-3" style={{ color: '#4a4a60' }}>
+          <p className="text-xs mt-3" style={{ color: '#7878a0' }}>
             No draft submitted yet
           </p>
         )
@@ -138,12 +138,14 @@ function ApplicationCard({ app, onAction, acting }) {
             <>
               <ActionButton
                 label="Mark Under Review"
+                ariaLabel={`Mark ${app.creatorName}'s application under review`}
                 onClick={() => onAction(app._id, 'under review')}
                 loading={acting}
                 variant="primary"
               />
               <ActionButton
                 label="Reject"
+                ariaLabel={`Reject ${app.creatorName}'s application`}
                 onClick={() => onAction(app._id, 'rejected')}
                 loading={acting}
                 variant="danger"
@@ -155,18 +157,21 @@ function ApplicationCard({ app, onAction, acting }) {
             <>
               <ActionButton
                 label={app.draftLink ? 'Approve Draft' : 'Approve'}
+                ariaLabel={`Approve ${app.creatorName}'s application`}
                 onClick={() => onAction(app._id, 'approved')}
                 loading={acting}
                 variant="success"
               />
               <ActionButton
                 label="Request Revision"
+                ariaLabel={`Request revision from ${app.creatorName}`}
                 onClick={() => onAction(app._id, 'revision requested')}
                 loading={acting}
                 variant="warning"
               />
               <ActionButton
                 label="Reject"
+                ariaLabel={`Reject ${app.creatorName}'s application`}
                 onClick={() => onAction(app._id, 'rejected')}
                 loading={acting}
                 variant="danger"
@@ -178,6 +183,7 @@ function ApplicationCard({ app, onAction, acting }) {
             <>
               <ActionButton
                 label="Approve Draft"
+                ariaLabel={`Approve ${app.creatorName}'s revised draft`}
                 onClick={() => onAction(app._id, 'approved')}
                 loading={acting}
                 variant="success"
@@ -186,6 +192,7 @@ function ApplicationCard({ app, onAction, acting }) {
               />
               <ActionButton
                 label="Reject"
+                ariaLabel={`Reject ${app.creatorName}'s application`}
                 onClick={() => onAction(app._id, 'rejected')}
                 loading={acting}
                 variant="danger"
@@ -196,6 +203,7 @@ function ApplicationCard({ app, onAction, acting }) {
           {app.status === 'approved' && (
             <ActionButton
               label="Close Deal ✓"
+              ariaLabel={`Close deal with ${app.creatorName}`}
               onClick={() => onAction(app._id, 'deal closed')}
               loading={acting}
               variant="close"
@@ -248,7 +256,7 @@ const VARIANT_STYLES = {
   close: { background: 'linear-gradient(135deg, #7c3aed, #ec4899)', color: 'white' },
 }
 
-function ActionButton({ label, onClick, loading, variant, disabled, disabledHint }) {
+function ActionButton({ label, onClick, loading, variant, disabled, disabledHint, ariaLabel }) {
   const style = VARIANT_STYLES[variant] ?? VARIANT_STYLES.primary
   const isDisabled = loading || disabled
 
@@ -258,6 +266,7 @@ function ActionButton({ label, onClick, loading, variant, disabled, disabledHint
         type="button"
         onClick={onClick}
         disabled={isDisabled}
+        aria-label={ariaLabel || label}
         className="px-4 py-1.5 rounded-xl text-xs font-semibold transition-all"
         style={{ ...style, opacity: isDisabled ? 0.45 : 1, cursor: isDisabled ? 'not-allowed' : 'pointer' }}
       >
@@ -279,11 +288,13 @@ ActionButton.propTypes = {
   variant: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   disabledHint: PropTypes.string,
+  ariaLabel: PropTypes.string,
 }
 
 ActionButton.defaultProps = {
   disabled: false,
   disabledHint: '',
+  ariaLabel: '',
 }
 
 // ─── Stat chip ────────────────────────────────────────────────────────────────
@@ -297,7 +308,7 @@ function StatChip({ label, value, color }) {
       <p className="text-2xl font-bold" style={{ color }}>
         {value}
       </p>
-      <p className="text-xs mt-0.5" style={{ color: '#6b6b80' }}>
+      <p className="text-xs mt-0.5" style={{ color: '#9494aa' }}>
         {label}
       </p>
     </div>
@@ -368,7 +379,7 @@ export default function ApplicationsInbox() {
       {/* Header */}
       <div className="mb-6">
         <h1 className="text-3xl font-bold text-white mb-1">Applications Inbox</h1>
-        <p style={{ color: '#6b6b80' }}>
+        <p style={{ color: '#9494aa' }}>
           Review creator applications and manage your deals
         </p>
       </div>
@@ -407,6 +418,7 @@ export default function ApplicationsInbox() {
               key={tab.key}
               type="button"
               onClick={() => setActiveTab(tab.key)}
+              aria-pressed={isActive}
               className="px-4 py-1.5 rounded-full text-xs font-medium transition-all"
               style={
                 isActive
@@ -446,7 +458,7 @@ export default function ApplicationsInbox() {
           className="text-center py-16 rounded-2xl"
           style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38' }}
         >
-          <p className="text-sm" style={{ color: '#6b6b80' }}>
+          <p className="text-sm" style={{ color: '#9494aa' }}>
             No applications yet.
           </p>
         </div>
@@ -455,7 +467,7 @@ export default function ApplicationsInbox() {
           className="text-center py-12 rounded-2xl"
           style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38' }}
         >
-          <p className="text-sm" style={{ color: '#6b6b80' }}>
+          <p className="text-sm" style={{ color: '#9494aa' }}>
             No applications with this status.
           </p>
         </div>

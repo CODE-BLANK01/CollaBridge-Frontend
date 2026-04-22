@@ -11,7 +11,7 @@ function Field({ label, value }) {
   if (!value && value !== 0) return null
   return (
     <div>
-      <p className="text-xs font-medium mb-1" style={{ color: '#6b6b80' }}>{label}</p>
+      <p className="text-xs font-medium mb-1" style={{ color: '#9494aa' }}>{label}</p>
       <p className="text-sm text-white">{value}</p>
     </div>
   )
@@ -59,7 +59,7 @@ export default function CollaborationDetail() {
         />
       )}
 
-      <Link to="/collaborations" className="inline-flex items-center gap-1.5 text-sm mb-6 transition-colors" style={{ color: '#6b6b80' }}>
+      <Link to="/collaborations" className="inline-flex items-center gap-1.5 text-sm mb-6 transition-colors" style={{ color: '#9494aa' }}>
         <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
@@ -82,7 +82,7 @@ export default function CollaborationDetail() {
             <h1 className="text-2xl font-bold text-white mb-1">{collab.campaignTitle}</h1>
             <p className="text-sm font-medium" style={{ color: '#fb923c' }}>
               {collab.creatorName}
-              <span className="mx-2" style={{ color: '#4a4a60' }}>×</span>
+              <span className="mx-2" style={{ color: '#7878a0' }}>×</span>
               <span className="text-white">{collab.brandName}</span>
             </p>
           </div>
@@ -113,7 +113,7 @@ export default function CollaborationDetail() {
         <Field label="Due Date" value={collab.dueDate ? new Date(collab.dueDate).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) : null} />
         {collab.submissionLink && (
           <div className="col-span-2">
-            <p className="text-xs font-medium mb-1" style={{ color: '#6b6b80' }}>Submission Link</p>
+            <p className="text-xs font-medium mb-1" style={{ color: '#9494aa' }}>Submission Link</p>
             <a
               href={collab.submissionLink}
               target="_blank"
@@ -127,7 +127,7 @@ export default function CollaborationDetail() {
         )}
         {collab.personalNotes && (
           <div className="col-span-2">
-            <p className="text-xs font-medium mb-1" style={{ color: '#6b6b80' }}>Personal Notes</p>
+            <p className="text-xs font-medium mb-1" style={{ color: '#9494aa' }}>Personal Notes</p>
             <div className="p-3 rounded-xl text-sm text-white leading-relaxed whitespace-pre-wrap"
               style={{ backgroundColor: '#0f0f18' }}>
               {collab.personalNotes}
@@ -135,12 +135,12 @@ export default function CollaborationDetail() {
           </div>
         )}
         <div>
-          <p className="text-xs font-medium mb-1" style={{ color: '#6b6b80' }}>Created</p>
-          <p className="text-sm" style={{ color: '#6b6b80' }}>{new Date(collab.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
+          <p className="text-xs font-medium mb-1" style={{ color: '#9494aa' }}>Created</p>
+          <p className="text-sm" style={{ color: '#9494aa' }}>{new Date(collab.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
         </div>
         <div>
-          <p className="text-xs font-medium mb-1" style={{ color: '#6b6b80' }}>Last Updated</p>
-          <p className="text-sm" style={{ color: '#6b6b80' }}>{new Date(collab.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
+          <p className="text-xs font-medium mb-1" style={{ color: '#9494aa' }}>Last Updated</p>
+          <p className="text-sm" style={{ color: '#9494aa' }}>{new Date(collab.updatedAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}</p>
         </div>
       </div>
     </div>

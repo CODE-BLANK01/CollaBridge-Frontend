@@ -92,7 +92,7 @@ export default function CollaborationForm() {
   return (
     <div className="max-w-2xl">
       <Link to={isEdit ? `/collaborations/${id}` : '/collaborations'}
-        className="inline-flex items-center gap-1.5 text-sm mb-6" style={{ color: '#6b6b80' }}>
+        className="inline-flex items-center gap-1.5 text-sm mb-6" style={{ color: '#9494aa' }}>
         <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
@@ -101,7 +101,7 @@ export default function CollaborationForm() {
 
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-1">{isEdit ? 'Edit Collaboration' : 'New Collaboration'}</h1>
-        <p style={{ color: '#6b6b80' }}>{isEdit ? 'Update collaboration details' : 'Log a new creator deal'}</p>
+        <p style={{ color: '#9494aa' }}>{isEdit ? 'Update collaboration details' : 'Log a new creator deal'}</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-5" style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38', borderRadius: '1rem', padding: '1.5rem' }}>

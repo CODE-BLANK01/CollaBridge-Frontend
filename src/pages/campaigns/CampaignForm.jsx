@@ -93,7 +93,7 @@ export default function CampaignForm() {
   return (
     <div className="max-w-2xl">
       <Link to={isEdit ? `/campaigns/${id}` : '/campaigns'}
-        className="inline-flex items-center gap-1.5 text-sm mb-6 transition-colors" style={{ color: '#6b6b80' }}>
+        className="inline-flex items-center gap-1.5 text-sm mb-6 transition-colors" style={{ color: '#9494aa' }}>
         <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
@@ -102,7 +102,7 @@ export default function CampaignForm() {
 
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-1">{isEdit ? 'Edit Campaign' : 'New Campaign'}</h1>
-        <p style={{ color: '#6b6b80' }}>{isEdit ? 'Update campaign details' : 'Launch a new brand campaign'}</p>
+        <p style={{ color: '#9494aa' }}>{isEdit ? 'Update campaign details' : 'Launch a new brand campaign'}</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-5" style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38', borderRadius: '1rem', padding: '1.5rem' }}>

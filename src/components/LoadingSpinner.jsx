@@ -7,7 +7,7 @@ export default function LoadingSpinner({ text = 'Loading...' }) {
         className="w-10 h-10 rounded-full border-2 border-transparent animate-spin"
         style={{ borderTopColor: '#7c3aed', borderRightColor: '#ec4899' }}
       />
-      <p className="text-sm" style={{ color: '#6b6b80' }}>{text}</p>
+      <p className="text-sm" style={{ color: '#9494aa' }}>{text}</p>
     </div>
   )
 }

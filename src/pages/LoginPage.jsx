@@ -63,20 +63,21 @@ export default function LoginPage() {
           </div>
           <div>
             <p className="text-white font-semibold leading-tight">CollaBridge</p>
-            <p className="text-xs" style={{ color: '#6b6b80' }}>Brand × Creator OS</p>
+            <p className="text-xs" style={{ color: '#9494aa' }}>Brand × Creator OS</p>
           </div>
         </div>
 
         <div className="rounded-2xl p-8" style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38' }}>
           <h1 className="text-2xl font-bold text-white mb-1">Welcome back</h1>
-          <p className="text-sm mb-6" style={{ color: '#6b6b80' }}>Sign in to your account</p>
+          <p className="text-sm mb-6" style={{ color: '#9494aa' }}>Sign in to your account</p>
 
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-xs font-medium mb-1.5" style={{ color: '#9ca3af' }}>
+              <label htmlFor="email" className="block text-xs font-medium mb-1.5" style={{ color: '#9ca3af' }}>
                 Email <span style={{ color: '#ec4899' }}>*</span>
               </label>
               <input
+                id="email"
                 type="email" value={form.email} onChange={set('email')} required
                 className={inputClass} style={inputStyle} placeholder="you@example.com"
                 onFocus={e => e.target.style.borderColor = 'rgba(124,58,237,0.6)'}
@@ -84,11 +85,12 @@ export default function LoginPage() {
               />
             </div>
             <div>
-              <label className="block text-xs font-medium mb-1.5" style={{ color: '#9ca3af' }}>
+              <label htmlFor="password" className="block text-xs font-medium mb-1.5" style={{ color: '#9ca3af' }}>
                 Password <span style={{ color: '#ec4899' }}>*</span>
               </label>
               <div className="relative">
                 <input
+                  id="password"
                   type={showPassword ? 'text' : 'password'}
                   value={form.password} onChange={set('password')} required
                   className={inputClass} style={{ ...inputStyle, paddingRight: '2.75rem' }}
@@ -99,8 +101,9 @@ export default function LoginPage() {
                 <button
                   type="button"
                   onClick={() => setShowPassword(v => !v)}
+                  aria-label={showPassword ? 'Hide password' : 'Show password'}
                   className="absolute right-3 top-1/2 -translate-y-1/2"
-                  style={{ color: '#6b6b80' }}
+                  style={{ color: '#9494aa' }}
                 >
                   <EyeIcon open={showPassword} />
                 </button>
@@ -122,7 +125,7 @@ export default function LoginPage() {
             </button>
           </form>
 
-          <p className="text-sm text-center mt-5" style={{ color: '#6b6b80' }}>
+          <p className="text-sm text-center mt-5" style={{ color: '#9494aa' }}>
             Don&apos;t have an account?{' '}
             <Link to="/register" className="font-medium" style={{ color: '#a78bfa' }}>
               Create one

@@ -3,8 +3,12 @@
 html, body {
   background-color: #0f0f18;
   color: white;
-  font-family: system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  font-feature-settings: 'cv11', 'ss01';
+  font-variation-settings: 'opsz' 32;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
 }
 
 #root {
@@ -15,6 +19,12 @@ html, body {
 
 button, [role="button"], a {
   cursor: pointer;
+}
+
+*:focus-visible {
+  outline: 2px solid #7c3aed;
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar {

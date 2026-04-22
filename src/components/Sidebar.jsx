@@ -89,6 +89,7 @@ export default function Sidebar() {
 
   return (
     <aside
+      aria-label="Main navigation"
       className="fixed top-0 left-0 h-screen w-64 flex flex-col"
       style={{ backgroundColor: '#12121c', borderRight: '1px solid #2a2a38' }}
     >
@@ -113,7 +114,7 @@ export default function Sidebar() {
           </svg>
           <div>
             <p className="text-white font-semibold text-sm leading-tight">CollaBridge</p>
-            <p className="text-xs" style={{ color: '#6b6b80' }}>
+            <p className="text-xs" style={{ color: '#9494aa' }}>
               {user?.role === 'brand' ? 'Brand Dashboard' : 'Creator Dashboard'}
             </p>
           </div>
@@ -121,7 +122,7 @@ export default function Sidebar() {
       </div>
 
       <div className="px-3 mb-2">
-        <p className="text-xs font-medium px-3 mb-1" style={{ color: '#4a4a60' }}>MENU</p>
+        <p className="text-xs font-medium px-3 mb-1" style={{ color: '#7878a0' }}>MENU</p>
       </div>
 
       {/* Role-specific nav */}
@@ -139,7 +140,7 @@ export default function Sidebar() {
             style={({ isActive }) =>
               isActive
                 ? { background: activeGradient, color: accentColor, border: `1px solid ${activeBorder}` }
-                : { color: '#6b6b80', border: '1px solid transparent' }
+                : { color: '#9494aa', border: '1px solid transparent' }
             }
           >
             {icon}
@@ -171,10 +172,13 @@ export default function Sidebar() {
         </div>
         <button
           onClick={handleLogout}
+          aria-label="Sign out"
           className="w-full flex items-center gap-2 px-3 py-2 rounded-xl text-xs font-medium transition-all"
-          style={{ color: '#6b6b80', border: '1px solid #2a2a38' }}
+          style={{ color: '#9494aa', border: '1px solid #2a2a38' }}
           onMouseEnter={e => { e.currentTarget.style.color = '#f87171'; e.currentTarget.style.borderColor = 'rgba(239,68,68,0.3)' }}
-          onMouseLeave={e => { e.currentTarget.style.color = '#6b6b80'; e.currentTarget.style.borderColor = '#2a2a38' }}
+          onMouseLeave={e => { e.currentTarget.style.color = '#9494aa'; e.currentTarget.style.borderColor = '#2a2a38' }}
+          onFocus={e => { e.currentTarget.style.color = '#f87171'; e.currentTarget.style.borderColor = 'rgba(239,68,68,0.3)' }}
+          onBlur={e => { e.currentTarget.style.color = '#9494aa'; e.currentTarget.style.borderColor = '#2a2a38' }}
         >
           <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
