@@ -28,7 +28,7 @@ export default function LoginPage() {
   const [error, setError] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
-  if (user) return <Navigate to="/" replace />
+  if (user) return <Navigate to="/dashboard" replace />
 
   function set(field) {
     return e => setForm(prev => ({ ...prev, [field]: e.target.value }))
@@ -42,7 +42,7 @@ export default function LoginPage() {
       const res = await loginUser(form)
       login(res.token, res.user)
       toast.success(`Welcome back, ${res.user.name}!`)
-      navigate('/')
+      navigate('/dashboard')
     } catch (err) {
       setError(err.message)
       toast.error(err.message)

@@ -30,7 +30,7 @@ export default function RegisterPage() {
   const [error, setError] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
-  if (user) return <Navigate to="/" replace />
+  if (user) return <Navigate to="/dashboard" replace />
 
   function set(field) {
     return e => setForm(prev => ({ ...prev, [field]: e.target.value }))
@@ -48,7 +48,7 @@ export default function RegisterPage() {
       const res = await registerUser(form)
       login(res.token, res.user)
       toast.success('Account created! Welcome to CollaBridge.')
-      navigate('/')
+      navigate('/dashboard')
     } catch (err) {
       setError(err.message)
       toast.error(err.message)
