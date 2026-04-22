@@ -15,13 +15,14 @@ const STATUSES = [
 const inputClass = 'w-full px-4 py-2.5 rounded-xl text-sm text-white outline-none transition-all'
 const inputStyle = { backgroundColor: '#1a1a28', border: '1px solid #2a2a38', color: 'white' }
 
-function Field({ label, required, children }) {
+function Field({ label, required, hint, children }) {
   return (
     <div>
       <label className="block text-xs font-medium mb-1.5" style={{ color: '#9ca3af' }}>
         {label} {required && <span style={{ color: '#f97316' }}>*</span>}
       </label>
       {children}
+      {hint && <p className="text-xs mt-1.5 leading-relaxed" style={{ color: '#7878a0' }}>{hint}</p>}
     </div>
   )
 }
@@ -101,7 +102,7 @@ export default function CollaborationForm() {
 
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-1">{isEdit ? 'Edit Collaboration' : 'New Collaboration'}</h1>
-        <p style={{ color: '#9494aa' }}>{isEdit ? 'Update collaboration details' : 'Log a new creator deal'}</p>
+        <p style={{ color: '#9494aa' }}>{isEdit ? 'Update collaboration details' : 'Record a direct creator deal — track the draft status, submission link, and due date.'}</p>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-5" style={{ backgroundColor: '#16161f', border: '1px solid #2a2a38', borderRadius: '1rem', padding: '1.5rem' }}>
@@ -152,7 +153,7 @@ export default function CollaborationForm() {
               onFocus={e => e.target.style.borderColor = 'rgba(249,115,22,0.6)'}
               onBlur={e => e.target.style.borderColor = '#2a2a38'} />
           </Field>
-          <Field label="Submission Link">
+          <Field label="Submission Link" hint="Link to the finished content — Google Drive, Dropbox, Frame.io, etc.">
             <input type="url" value={form.submissionLink} onChange={set('submissionLink')}
               className={inputClass} style={inputStyle} placeholder="https://..."
               onFocus={e => e.target.style.borderColor = 'rgba(249,115,22,0.6)'}
@@ -160,7 +161,7 @@ export default function CollaborationForm() {
           </Field>
         </div>
 
-        <Field label="Personal Notes">
+        <Field label="Personal Notes" hint="Private notes for yourself — rate card agreed, next steps, brand contact, anything useful.">
           <textarea value={form.personalNotes} onChange={set('personalNotes')} rows={3}
             className={inputClass} style={{ ...inputStyle, resize: 'none' }} placeholder="Your thoughts, rate card, next steps..."
             onFocus={e => e.target.style.borderColor = 'rgba(249,115,22,0.6)'}

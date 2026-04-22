@@ -96,12 +96,10 @@ function ApplicationCard({ app, onAction, acting }) {
 
       {/* ── Pitch message ── */}
       {app.message && (
-        <p
-          className="text-xs mt-3 leading-relaxed px-1"
-          style={{ color: '#9ca3af', borderLeft: '2px solid #2a2a38', paddingLeft: '10px' }}
-        >
-          {app.message}
-        </p>
+        <div className="mt-3 px-3 py-2.5 rounded-xl" style={{ backgroundColor: '#0f0f18', border: '1px solid #2a2a38' }}>
+          <p className="text-xs font-semibold mb-1 uppercase tracking-wide" style={{ color: '#7878a0' }}>Pitch</p>
+          <p className="text-sm leading-relaxed" style={{ color: '#9ca3af' }}>{app.message}</p>
+        </div>
       )}
 
       {/* ── Draft link ── */}

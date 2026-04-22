@@ -15,13 +15,14 @@ const STATUSES = [
 const inputClass = 'w-full px-4 py-2.5 rounded-xl text-sm text-white outline-none transition-all'
 const inputStyle = { backgroundColor: '#1a1a28', border: '1px solid #2a2a38', color: 'white' }
 
-function Field({ label, required, children }) {
+function Field({ label, required, hint, children }) {
   return (
     <div>
       <label className="block text-xs font-medium mb-1.5" style={{ color: '#9ca3af' }}>
         {label} {required && <span style={{ color: '#ec4899' }}>*</span>}
       </label>
       {children}
+      {hint && <p className="text-xs mt-1.5 leading-relaxed" style={{ color: '#7878a0' }}>{hint}</p>}
     </div>
   )
 }
@@ -161,14 +162,14 @@ export default function CampaignForm() {
           </Field>
         </div>
 
-        <Field label="Requirements / Content Brief">
+        <Field label="Requirements / Content Brief" hint="This is shown to creators when they apply — include deliverables, tone of voice, dos and don'ts, and posting guidelines.">
           <textarea value={form.requirements} onChange={set('requirements')} rows={3}
             className={inputClass} style={{ ...inputStyle, resize: 'none' }} placeholder="Deliverables, tone, dos and don'ts..."
             onFocus={e => e.target.style.borderColor = 'rgba(124,58,237,0.6)'}
             onBlur={e => e.target.style.borderColor = '#2a2a38'} />
         </Field>
 
-        <Field label="Internal Notes">
+        <Field label="Internal Notes" hint="Private — never visible to creators. Use for rate cards, team notes, or deal context.">
           <textarea value={form.internalNotes} onChange={set('internalNotes')} rows={2}
             className={inputClass} style={{ ...inputStyle, resize: 'none' }} placeholder="Private notes (not shared with creator)..."
             onFocus={e => e.target.style.borderColor = 'rgba(124,58,237,0.6)'}

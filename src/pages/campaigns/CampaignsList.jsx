@@ -41,7 +41,7 @@ export default function CampaignsList() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-3xl font-bold text-white mb-1">Campaigns</h1>
-          <p style={{ color: '#9494aa' }}>Manage brand campaigns</p>
+          <p style={{ color: '#9494aa' }}>Create campaigns to attract creators — set a brief, budget & deadline, then review who applies.</p>
         </div>
         <Link
           to="/campaigns/new"
@@ -91,7 +91,9 @@ export default function CampaignsList() {
               <p className="text-4xl mb-3">📣</p>
               <p className="text-white font-medium">No campaigns found</p>
               <p className="text-sm mt-1 mb-4" style={{ color: '#9494aa' }}>
-                {filter !== 'all' ? 'Try a different filter' : 'Create your first campaign'}
+                {filter !== 'all'
+                  ? 'No campaigns with this status. Try a different filter.'
+                  : 'Create your first campaign — set a platform, budget, and brief. Creators will apply directly.'}
               </p>
               <Link to="/campaigns/new" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white"
                 style={{ background: 'linear-gradient(135deg, #7c3aed, #ec4899)' }}>

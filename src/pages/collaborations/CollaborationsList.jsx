@@ -41,7 +41,7 @@ export default function CollaborationsList() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-3xl font-bold text-white mb-1">Collaborations</h1>
-          <p style={{ color: '#9494aa' }}>Track creator deals</p>
+          <p style={{ color: '#9494aa' }}>Log and track your active brand deals — record submission links, due dates, and deal status.</p>
         </div>
         <Link
           to="/collaborations/new"
@@ -91,7 +91,9 @@ export default function CollaborationsList() {
               <p className="text-4xl mb-3">🤝</p>
               <p className="text-white font-medium">No collaborations found</p>
               <p className="text-sm mt-1 mb-4" style={{ color: '#9494aa' }}>
-                {filter !== 'all' ? 'Try a different filter' : 'Log your first creator collab'}
+                {filter !== 'all'
+                  ? 'No collaborations with this status. Try a different filter.'
+                  : 'Log a creator deal here — track submission links, due dates, and progress outside of the applications flow.'}
               </p>
               <Link to="/collaborations/new" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold text-white"
                 style={{ background: 'linear-gradient(135deg, #f97316, #ec4899)' }}>

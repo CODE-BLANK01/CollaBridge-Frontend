@@ -9,6 +9,65 @@ import StatusBadge from '../components/StatusBadge'
 import PlatformBadge from '../components/PlatformBadge'
 import LoadingSpinner from '../components/LoadingSpinner'
 
+function OnboardingCard({ role, onDismiss }) {
+  const isBrand = role === 'brand'
+  const steps = isBrand
+    ? [
+        { n: '1', title: 'Create a Campaign', desc: 'Set your platform, budget, requirements and go live. Creators can discover and apply immediately.' },
+        { n: '2', title: 'Review Applications', desc: 'Browse applicants in your inbox, check their pitches, and move them through your pipeline.' },
+        { n: '3', title: 'Approve & Close', desc: 'Approve a creator\'s draft, then close the deal to mark the collaboration complete.' },
+      ]
+    : [
+        { n: '1', title: 'Browse Campaigns', desc: 'Find open brand campaigns that match your platform and niche.' },
+        { n: '2', title: 'Apply', desc: 'Hit Apply on any campaign. Write a brief pitch — the brand will review your profile.' },
+        { n: '3', title: 'Submit Your Draft', desc: 'Once the brand approves you, paste your draft link. When they confirm — deal closed!' },
+      ]
+
+  const gradient = isBrand
+    ? 'linear-gradient(135deg, rgba(124,58,237,0.12), rgba(99,102,241,0.08))'
+    : 'linear-gradient(135deg, rgba(236,72,153,0.12), rgba(249,115,22,0.08))'
+  const border = isBrand ? 'rgba(124,58,237,0.25)' : 'rgba(236,72,153,0.25)'
+  const numGrad = isBrand
+    ? 'linear-gradient(135deg, #7c3aed, #6d28d9)'
+    : 'linear-gradient(135deg, #ec4899, #be185d)'
+
+  return (
+    <div className="rounded-2xl p-5 mb-8" style={{ background: gradient, border: `1px solid ${border}` }}>
+      <div className="flex items-start justify-between gap-4 mb-4">
+        <div>
+          <p className="text-sm font-semibold text-white">How CollaBridge works</p>
+          <p className="text-xs mt-0.5" style={{ color: '#9494aa' }}>Get up to speed in 3 steps</p>
+        </div>
+        <button
+          type="button"
+          onClick={onDismiss}
+          aria-label="Dismiss onboarding guide"
+          className="text-xs px-3 py-1.5 rounded-lg shrink-0 transition-all"
+          style={{ color: '#9494aa', backgroundColor: '#1a1a28', border: '1px solid #2a2a38' }}
+        >
+          Got it
+        </button>
+      </div>
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {steps.map(step => (
+          <div key={step.n} className="flex gap-3">
+            <div
+              className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5 text-white"
+              style={{ background: numGrad }}
+            >
+              {step.n}
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-white leading-snug">{step.title}</p>
+              <p className="text-xs mt-0.5 leading-relaxed" style={{ color: '#9494aa' }}>{step.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
 function StatCard({ label, value, sub, gradient }) {
   return (
     <div
@@ -37,12 +96,21 @@ function BrandDashboard({ campaigns, applications }) {
   const approved = applications.filter(a => a.status === 'approved').length
   const closed = applications.filter(a => a.status === 'deal closed').length
 
+  const [showOnboarding, setShowOnboarding] = useState(
+    () => !localStorage.getItem('cb_ob_brand')
+  )
+  function dismissOnboarding() {
+    localStorage.setItem('cb_ob_brand', '1')
+    setShowOnboarding(false)
+  }
+
   return (
     <>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-1">Brand Dashboard</h1>
-        <p style={{ color: '#9494aa' }}>Your campaigns and incoming applications</p>
+        <p style={{ color: '#9494aa' }}>Your campaigns and incoming applications at a glance</p>
       </div>
+      {showOnboarding && <OnboardingCard role="brand" onDismiss={dismissOnboarding} />}
 
       <div className="grid grid-cols-2 gap-4 mb-8 lg:grid-cols-4">
         <StatCard label="Active Campaigns" value={open} sub="accepting creators" gradient="linear-gradient(135deg, #7c3aed, #6d28d9)" />
@@ -124,12 +192,21 @@ function CreatorDashboard({ collabs, applications }) {
   const approved = applications.filter(a => a.status === 'approved').length
   const activeCollabs = collabs.filter(c => c.status === 'draft' || c.status === 'revision_requested').length
 
+  const [showOnboarding, setShowOnboarding] = useState(
+    () => !localStorage.getItem('cb_ob_creator')
+  )
+  function dismissOnboarding() {
+    localStorage.setItem('cb_ob_creator', '1')
+    setShowOnboarding(false)
+  }
+
   return (
     <>
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-white mb-1">Creator Dashboard</h1>
-        <p style={{ color: '#9494aa' }}>Your activity at a glance</p>
+        <p style={{ color: '#9494aa' }}>Your applications and active collaborations at a glance</p>
       </div>
+      {showOnboarding && <OnboardingCard role="creator" onDismiss={dismissOnboarding} />}
 
       <div className="grid grid-cols-2 gap-4 mb-8 lg:grid-cols-4">
         <StatCard label="Applications Sent" value={applications.length} sub="all time" gradient="linear-gradient(135deg, #ec4899, #db2777)" />
